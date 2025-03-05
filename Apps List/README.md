@@ -13,6 +13,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Photoshop
 	- Affine
 	- Openboard
+	- Lorien
 - Sound/Music🎹🎙️🎧
 	- Bfxr
 	- Fami Studio
