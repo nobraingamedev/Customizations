@@ -15,10 +15,13 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Openboard
 	- Lorien
 - Sound/Music🎹🎙️🎧
-	- Bfxr
-	- Fami Studio
-	- Anvil Studio
-	- FL Studio
+	- Vital Synthesizer 
+	- FL Studio - For Music
+	- Reaper - For SFX
+	- LABS - Professional Instruments
+	- PaulxStretch - ambient and horror sounds.
+	- Sunvox 
+	- Bfxr - prototyping
 - Video Editors and Players🎬✂️🎥
 	- DaVinci Resolve
 	- MPV
