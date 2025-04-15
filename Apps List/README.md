@@ -8,6 +8,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Godot
 - Painting/Coloring/Drawing/Brainstorm/Whiteboard🎨🖼️🧠
 	- Aseprite
+	- Laigter - create normal maps of 2D assets
 	- Krita
 	- Inkscape
 	- Photoshop
