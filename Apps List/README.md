@@ -25,7 +25,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Bfxr - prototyping
 - Video Editors and Players🎬✂️🎥
 	- DaVinci Resolve
-	- MPV
+	- VLC
 - Management📅📋📊
 	- Obsidian
 	- Notion
