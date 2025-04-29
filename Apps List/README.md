@@ -51,6 +51,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- [FullScreenLock](https://github.com/blaberry/FullscreenLock)
 	- Brave
 	- Everything
+	- NileSoft Shell
 	- Bitwarden
 	- FxSound
 	- Git
