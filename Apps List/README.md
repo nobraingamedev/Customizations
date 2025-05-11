@@ -47,6 +47,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Telegram Desktop
 	- Whatsapp
 - Other Must Downloads📐📏🗿
+	- File Pilot
 	- Autohotkey
 	- [FullScreenLock](https://github.com/blaberry/FullscreenLock)
 	- Brave

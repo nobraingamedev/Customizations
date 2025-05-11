@@ -3,7 +3,7 @@
 - These Scripts are made and tested in AutoHotKey v2.
 - These are general use-cases and you can generate more scripts to perform some task by asking AI(s).
 - These are used in Windows so I have no idea if they are going to work in any other OS.
-- In AutoHotKey, representation is as follows :
+- In AutoHotKey, representation is as follows:
   - `#` - Windows Key
   - `+` - Shift Key
   - `!` - Alt Key

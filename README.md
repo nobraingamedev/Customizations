@@ -1,6 +1,6 @@
 # Customizations 🎉✨
 
-This repository contains configurations and scripts for setting up a consistent working environment on new machines 💻🔧. It includes settings for AutoHotkey ⚡, MPV 🎥, VS Code 🎨, Obsidian 📝, and a list of preferred apps 📦🌟.
+This repository contains configurations and scripts for setting up a consistent working environment on new machines 💻🔧. It includes settings for AutoHotkey ⚡, MPV 🎥, VS Code 🎨, Obsidian 📝, and a list of preferred apps📦🌟.
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/ShivanshShukla01/Customizations) 📏
 ![GitHub last commit](https://img.shields.io/github/last-commit/ShivanshShukla01/Customizations) 🕒
