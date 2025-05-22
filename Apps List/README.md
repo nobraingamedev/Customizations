@@ -54,6 +54,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Everything
 	- Bitwarden
 	- FxSound
+	- Fluent Search
 	- Git
 	- Rainmeter
 	- Sumatra PDF
