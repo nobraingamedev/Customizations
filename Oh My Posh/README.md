@@ -12,7 +12,7 @@ Path to folder is `C:\Users\<username>\AppData\Local\Programs\oh-my-posh\themes\
 ### Paste the below code in the file and save it.
 <details>
 <summary> Click to expand the code.</summary>
-```json
+<pre><code>
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
@@ -148,7 +148,7 @@ Path to folder is `C:\Users\<username>\AppData\Local\Programs\oh-my-posh\themes\
   "final_space": true,
   "version": 3
 }
-```
+</code><pre>
 </details>
 
 ### Run `notepad $PROFILE` 
