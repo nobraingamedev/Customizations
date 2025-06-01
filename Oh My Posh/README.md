@@ -1,18 +1,21 @@
-### Download the Font from the [Link](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip) >>> Extract >>> Install All 
+### Procedure
+1. Download the Font from the [Link](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip) >>> Extract >>> Install All 
+2. Restart the Terminal >>> Settings >>> Defaults >>> Appearance >>> Change the Font Face to Fira Code
+3. Install `WinGet` from the Store and `winget install JanDeDobbeleer.OhMyPosh -s winget` to install Oh My Posh
+4. Run `oh-my-posh` to see whether it is installed properly or not.
+5. Open the Oh My Posh themes folder and create a new file called `gruvbox-edited.omp.json` 
+	1. Use Terminal to go to folder using `C:\Users\<username>\AppData\Local\Programs\oh-my-posh\themes\`
+	2. Use `notepad gruvbox-edited.omp.json` to create and open the file.
+6. Paste the [code](#gruvbox-edited.omp.json) in the file and save it.
+7. Run `notepad $PROFILE` 
+8. Paste the following command in the File and restart the terminal.
+```pwsh
+oh-my-posh init pwsh --config "C:\Users\shiva\AppData\Local\Programs\oh-my-posh\themes\gruvbox-edited.omp.json" | Invoke-Expression
+```
 
-### Restart the Terminal >>> Settings >>> Defaults >>> Appearance >>> Change the Font Face to Fira Code
+### gruvbox-edited.omp.json
 
-### Install `WinGet` from the Store and `winget install JanDeDobbeleer.OhMyPosh -s winget` to install Oh My Posh
-
-### Run `oh-my-posh` to see whether it is installed properly or not.
-
-### Open the Oh My Posh themes folder and create a new file called `gruvbox-edited.omp.json` 
-Path to folder is `C:\Users\<username>\AppData\Local\Programs\oh-my-posh\themes\`
-
-### Paste the below code in the file and save it.
-<details>
-<summary> Click to expand the code.</summary>
-<pre><code>
+```json
 {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
@@ -148,21 +151,4 @@ Path to folder is `C:\Users\<username>\AppData\Local\Programs\oh-my-posh\themes\
   "final_space": true,
   "version": 3
 }
-</code><pre>
-</details>
-
-### Run `notepad $PROFILE` 
-
-### Paste the following command in the File and restart the terminal.
-```pwsh
-oh-my-posh init pwsh --config "C:\Users\shiva\AppData\Local\Programs\oh-my-posh\themes\gruvbox-edited.omp.json" | Invoke-Expression
 ```
-
-
-
-
-
-
-
-
-
