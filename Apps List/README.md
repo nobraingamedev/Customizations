@@ -48,6 +48,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Whatsapp
 - Other Must Downloads📐📏🗿
 	- File Pilot
+	- Kando
 	- ImageGlass
 	- Autohotkey
 	- [FullScreenLock](https://github.com/blaberry/FullscreenLock)
