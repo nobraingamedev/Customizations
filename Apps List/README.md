@@ -56,6 +56,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- ffmpeg
 	- yt-dlp
 - Other Must Downloads📐📏🗿
+	- NileSoft Shell
 	- File Pilot
 	- Kando
 	- ImageGlass
