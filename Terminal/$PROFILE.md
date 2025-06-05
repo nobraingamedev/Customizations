@@ -1,0 +1,17 @@
+
+```pwsh
+
+oh-my-posh init pwsh --config "C:\Users\shiva\AppData\Local\Programs\oh-my-posh\themes\gruvbox-edited.omp.json" | Invoke-Expression
+
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle InlineView
+Set-PSReadLineOption -EditMode Windows
+
+function tmt {
+	Set-Location (Get-ChildItem -Directory -Recurse | Select-Object -ExpandProperty FullName | fzf)
+}
+
+function ftf {
+	Get-ChildItem -File -Recurse | Select-Object -ExpandProperty FullName | fzf
+}
+```	    	    
