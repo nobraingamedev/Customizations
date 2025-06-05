@@ -11,7 +11,6 @@ Set-PSReadLineOption -EditMode Windows
 function tmt {
 	Set-Location (Get-ChildItem -Directory -Recurse | Select-Object -ExpandProperty FullName | fzf)
 }
-
 function ftf {
 	Get-ChildItem -File -Recurse | Select-Object -ExpandProperty FullName | fzf
 }
