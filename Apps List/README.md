@@ -52,6 +52,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- PSReadLine
 		- Follow the guide in the [Terminal Folder](https://github.com/nobraingamedev/Customizations/tree/main/Terminal) to install the two above.
 	- fzf
+	- fd
 	- micro
 	- ffmpeg
 	- yt-dlp
