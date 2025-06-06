@@ -167,8 +167,8 @@ AdjustScreenBrightness(step) {
 
 ```autohotkey
 ;TO CONTROL VOLUME WITH SCROLL WHEEL
-+WheelUp::Send {WheelLeft}
-+WheelDown::Send {WheelRight}
+;+WheelUp::Send {WheelLeft}
+;+WheelDown::Send {WheelRight}
 #WheelUp::Volume_Up
 #WheelDown::Volume_Down
 #Numpad5::Volume_Up
@@ -192,23 +192,25 @@ return
 
 ;CONTROL + SHIFT + ALT + Y
 ^!+y::
-    Run, "C:\Users\shiva\OneDrive\Pictures\Apps\Brave Profiles\Youtube - Brave.lnk"
+    Run, "C:\Users\shiva\OneDrive\Pictures\Apps\Brave Profiles\Kridachetra - Brave.lnk"
 return    
 
-;Window + Alt + T
-#!t::
-    Run, "C:\Users\shiva\OneDrive\Pictures\Apps\Brave Profiles\Coding - Brave.lnk" "C:\Program Files\Unity\Hub\Editor\6000.0.31f1\Editor\Data\Documentation\Unity Docs\Manual\UnityManual.html"
-return
-
-;Window + Alt + Ctrl + O
+;Shift + Alt + Ctrl + O
 ^+!o::
     Run,"C:\Users\shiva\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Code.lnk" "C:\Users\shiva\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Shortcuts.ahk"
 return
+
+;Window + E
+#e::
+    Run, "C:\Users\shiva\AppData\Local\Voidstar\FilePilot\FPilot.exe"
 
 ;Window + Alt + Ctrl + R
 ^+!r::
     Reload
 return
+
+#+s::Send {PrintScreen}	; for greenshot
+
 
 #s:: Run, "C:\Program Files\Everything\Everything.exe"
 
@@ -229,28 +231,6 @@ return
 
 ; @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-Pause::
-{
-    Send {End}
-    Send {;}
-
-}
-Return
-
-;FOR VISUAL STUDIO
-Shift & Pause::
-
-    Send ^h                 ; ctrl + h
-    Sleep 100               
-    SendRaw ^\s*$\n    ;send the regex to find empty lines
-    Sleep 100
-    Send !a                 ;alt + a 
-    Sleep 100
-    Send {Esc}              ;remove the find and replace dialogue box
-return
-
-; @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
 ;FOR OBSIDIAN
 ScrollLock::
     Send ^p                     ; Simulate Ctrl+P
@@ -262,11 +242,17 @@ return
 
 ; @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-;SO THAT F2 DO NOT LOSE ITS OWN FUNCTIONALITY
+;SO THAT F1 and F2 DO NOT LOSE ITS OWN FUNCTIONALITY
+F1::
+    KeyWait, F1
+    if (A_PriorKey = "F1") {
+        Send {F1}
+    }
+    return
 F2::
     KeyWait, F2
     if (A_PriorKey = "F2") {
-        Send {F2}R̥
+        Send {F2}
     }
     return
 
@@ -302,16 +288,16 @@ F1 & Down:: ; F1 + Arrow Down
 ; @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
  RAlt & Numpad2::
-  AdjustScreenBrightness(-10)
-  Return
-RAlt & Numpad5::
-  AdjustScreenBrightness(10)
-  Return
-RAlt & WheelDown::
   AdjustScreenBrightness(-5)
   Return
-RAlt & WheelUp::
+RAlt & Numpad5::
   AdjustScreenBrightness(5)
+  Return
+RAlt & WheelDown::
+  AdjustScreenBrightness(-10)
+  Return
+RAlt & WheelUp::
+  AdjustScreenBrightness(10)
   Return
 AdjustScreenBrightness(step) {
     service := "winmgmts:{impersonationLevel=impersonate}!\\.\root\WMI"

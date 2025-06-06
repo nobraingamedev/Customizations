@@ -35,7 +35,6 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Blender
 	- Blockbench
 - Coding Editors👩‍💻🔧📝
-	- Visual Studio 
 	- VS Code
 	- Notepad++
 - Other Game Dev Related⚔️🧩🎯
@@ -60,13 +59,15 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- NileSoft Shell
 	- File Pilot
 	- Kando
+	- GreenShot
+	- IrfanView
 	- ImageGlass
 	- Autohotkey
 	- [FullScreenLock](https://github.com/blaberry/FullscreenLock)
 	- Brave
 	- Everything
 	- Bitwarden
-	- Fluent Search
+	- Flow Launcher
 	- FxSound
 	- Git
 	- Rainmeter
@@ -74,14 +75,13 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Treesize
 	- Winrar & 7zip
 	- Stretchly
-	- Revo Uninstaller
+	- Revo Uninstaller Pro
 	- Powertoys
 	- PDFgear
 	- Lock Hunter
 	- [Pen Tablet Driver](https://www.xp-pen.com/download/deco-mini7.html)
 - Others Optional❓🧩🎲
 	- Bluestacks
-	- Desklamp
 	- Droid Cam
 	- Liquid Text
 	- FDM
