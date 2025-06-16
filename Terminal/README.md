@@ -14,6 +14,8 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
 
+function home{cd ~}
+
 # Take Me There
 function tmt {
     $dir = fd --type d | fzf
@@ -31,7 +33,7 @@ function of {
 }
 
 # Take Me To File's directory
-function tmfd {
+function tmtf {
     $file = fd --type f | fzf
     if ($file) {
         Set-Location (Split-Path $file -Parent)
@@ -54,13 +56,39 @@ function npf {
     }
 }
 
+# Kill file by selection
+function kbs {
+    $currentSessionId = (Get-Process -Id $PID).SessionId
+
+    Get-Process |
+    Where-Object { $_.SessionId -eq $currentSessionId } |
+    Select-Object Id, ProcessName, MainWindowTitle |
+    Sort-Object ProcessName |
+    ForEach-Object {
+        $title = if ($_.MainWindowTitle) { $_.MainWindowTitle } else { "[No Window]" }
+        "$($_.Id)`t$($_.ProcessName)`t$title"
+    } |
+    fzf --header "Select processes to kill (TAB = multi-select)" --multi |
+    ForEach-Object {
+        $targetPid = ($_ -split "`t")[0]
+        try {
+            Stop-Process -Id $targetPid -Force
+            Write-Host "Killed process with PID $targetPid"
+        } catch {
+            Write-Host "Failed to kill PID ${targetPid}: $_"
+        }
+    }
+}
+
 # Open the commands 
 function hp {
 	$line = "---------------------------------------------"
 	Write-Host "tmt" -NoNewLine -ForegroundColor Cyan
 	Write-Host " -> cd to chosen directory" -ForegroundColor Cyan
-	Write-Host "tmfd" -NoNewLine -ForegroundColor Cyan
-	Write-Host " -> Take me to chosen file's directory" -ForegroundColor Cyan
+	Write-Host "tmtf" -NoNewLine -ForegroundColor Cyan
+	Write-Host " -> Take Me To chosen File's directory" -ForegroundColor Cyan
+	Write-Host "kbs" -NoNewLine -ForegroundColor Cyan
+	Write-Host " -> Kill app By Selection" -ForegroundColor Cyan
 	Write-Host $line -ForegroundColor Cyan 
 	Write-Host "of" -NoNewLine -ForegroundColor Cyan
 	Write-Host 	" -> Open File in Default Program" -ForegroundColor Cyan
