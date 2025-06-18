@@ -47,15 +47,15 @@ Meter=String
 MeasureName=MeasurePercent
 Text=%1%
 AntiAlias=1
-FontColor=255,255,0,255
-;FontFace=Harlow Solid
+FontColor=178,244,251,255
+;FontFace=namaku
 StringStyle=bold
 ;StringAlign=CENTER
-FontSize=28
+FontSize=20
 X=160r
 Y=0r
-;W=45
-H=40
+;W=50
+H=30
 SolidColor=0,0,0,150
 
 ;=======================================================================METERS==
@@ -78,14 +78,13 @@ BackgroundColor=0,0,0,150  ; 150 opacity black
 
 [MeasureTime]
 Measure=Time
-Format=%d-%b-%y ~ %I:%M:%S %p
+Format=%d-%b ~ %H:%M:%S
 
 ;%d-%b-%y for date like 21-Sep-24
 ;%d-%m-%y for date like 21-10-24
 ;%I:%M:%S %p for 12 hour format
 ;%H:%M:%S for 24 hour format
 ;%p is for AM or PM
-
 
 ;================== Background Meter =====================
 [MeterBackground]
@@ -97,10 +96,11 @@ Meter=String
 MeasureName=MeasureTime
 FontColor=255,255,0,255
 ;FontFace=Harlow Solid
-FontSize=26
-W=400
-H=40
+FontSize=20
+W=220
+H=30
 AntiAlias=1
-SolidColor=0,0,0,255  ; 255 opacity black background
+SolidColor=0,0,0,150  ; 150 is opacity of black background
+;255 is 100% opacity and 0 is 0% opacity
 
 ```
