@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quick Launcher</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 30px;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: 0 auto;
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .link {
+      display: block;
+      background: #3366cc;
+      color: white;
+      text-decoration: none;
+      padding: 12px;
+      margin: 8px 0;
+      border-radius: 8px;
+      font-size: 16px;
+      text-align: center;
+      outline: none;
+    }
+
+    .link:focus {
+      background: #254b9b;
+      box-shadow: 0 0 0 2px #99c2ff;
+    }
+
+    .link:hover {
+      background: #254b9b;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🚀 Quick Launcher</h2>
+
+    <a href="https://gemini.google.com/u/0/app/95e6874a0b67fcc4" class="link" tabindex="0">Gemini - Alphabet Practice</a>
+    <a href="https://gemini.google.com/u/0/app/6685531fecb8517f" class="link" tabindex="0">Gemini - Quants Basic Practice</a>
+    <a href="customlink://chatgpt_study" class="link" tabindex="0">Fill It</a>
+    <!-- Add more links as needed -->
+  </div>
+
+  <script>
+    const links = Array.from(document.querySelectorAll('.link'));
+    let currentIndex = 0;
+
+    // Focus first item initially
+    window.onload = () => {
+      links[currentIndex].focus();
+    };
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'j') {
+        e.preventDefault();
+        currentIndex = (currentIndex + 1) % links.length;
+        links[currentIndex].focus();
+      } else if (e.key === 'ArrowUp' || e.key === 'k') {
+        e.preventDefault();
+        currentIndex = (currentIndex - 1 + links.length) % links.length;
+        links[currentIndex].focus();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        links[currentIndex].click();
+      }
+    });
+  </script>
+</body>
+</html>
