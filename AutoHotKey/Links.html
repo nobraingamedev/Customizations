@@ -3,89 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <title>Quick Launcher</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
       background: #f5f7fa;
       margin: 0;
       padding: 30px;
+	  display: flex;
+	  justify-content: center;	
     }
 
     .container {
-      max-width: 420px;
-      margin: 0 auto;
-      background: white;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      max-height: 90vh;
-      overflow-y: auto;
-    }
+	  display: inline-block;         /* Shrinks/grows based on content */
+	  background: white;
+	  padding: 30px 40px;
+	  border-radius: 12px;
+	  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	  max-height: 90vh;
+	  overflow-y: auto;
+	  text-align: center;           /* Optional: keeps content centered */
+	}
+	
+	#linksContainer {
+	  display: flex;
+	  flex-direction: column; /* remove it for horizontal layout */
+	  flex-wrap: wrap;
+	  gap: 12px;
+	  justify-content: center;
+	}
+
 
     h2 {
       margin-top: 0;
-      font-size: 24px;
+      font-size: 26px;
       text-align: center;
     }
 
     .link {
-      display: block;
-      background: #3366cc;
-      color: white;
-      text-decoration: none;
-      padding: 12px;
-      margin: 8px 0;
-      border-radius: 8px;
-      font-size: 16px;
-      text-align: center;
-      outline: none;
-    }
+	  display: inline-block;
+	  min-width: 300px;
+	  background: #3366cc;
+	  color: white;
+	  text-decoration: none;
+	  padding: 12px 20px;
+	  margin: 0;
+	  border-radius: 8px;
+	  font-size: 16px;
+	  text-align: center;
+	  white-space: nowrap; /* prevent wrapping inside a button */
+	}
 
     .link:focus {
-      background: #254b9b;
-      box-shadow: 0 0 0 2px #99c2ff;
-    }
+	  background: #27ae60; /* A lighter, vibrant but still rich green */
+	  box-shadow:
+		0 0 0 2px #27ae60,
+		0 0 12px 5px rgba(39, 174, 96, 0.4); /* Gentle glow */
+	  z-index: 1;
+	  position: relative;
+	  transform: scale(1.05);
+	}
 
-    .link:hover {
-      background: #254b9b;
-    }
+    .link {
+	  transition: transform 0.2s, box-shadow 0.2s;
+	}
+	.link:hover {
+	  transform: scale(1.05);
+	  box-shadow: 0 0 10px rgba(0, 128, 0, 0.3); /* or match your glow color */
+	}
+
   </style>
+
+  <script>
+    // 👇 JSON-style data — only change this!
+    const linksData = [
+	  {
+		title: "Gemini - Alphabet Practice",
+		href: "https://gemini.google.com/u/0/app/95e6874a0b67fcc4"
+	  },
+	  {
+		title: "Gemini - Quants Basic Practice",
+		href: "https://gemini.google.com/u/0/app/6685531fecb8517f"
+	  },
+	  {
+		title: "Banking GPT",
+		href: "https://chatgpt.com/c/6874c0ea-bf00-8007-bdef-11f775bacc9f"
+	  },
+	  {
+		title: "Telegram - Daily Epaper",
+		href: "tg://resolve?domain=dailyepaperzone29"
+	  },
+	  {
+		title: "Fill It",
+		href: "customlink://chatgpt_study"
+	  }
+	  
+	];
+
+  </script>
 </head>
 <body>
   <div class="container">
     <h2>🚀 Quick Launcher</h2>
-
-    <a href="https://gemini.google.com/u/0/app/95e6874a0b67fcc4" class="link" tabindex="0">Gemini - Alphabet Practice</a>
-    <a href="https://gemini.google.com/u/0/app/6685531fecb8517f" class="link" tabindex="0">Gemini - Quants Basic Practice</a>
-	<a href="https://chatgpt.com/c/6874c0ea-bf00-8007-bdef-11f775bacc9f" class="link" tabindex="0">Banking GPT</a>
-	<a href="tg://resolve?domain=dailyepaperzone29" class="link" tabindex="0">Telegram - Daily Epaper</a>
-	<a href="customlink://chatgpt_study" class="link" tabindex="0">Fill It</a>
-    <!-- Add more links as needed -->
+    <div id="linksContainer"></div>
   </div>
 
   <script>
+    // Generate links dynamically
+    const container = document.getElementById("linksContainer");
+
+    linksData.forEach((item, index) => {
+      const a = document.createElement("a");
+      a.href = item.href;
+      a.textContent = item.title;
+      a.className = "link";
+      a.tabIndex = 0;
+      container.appendChild(a);
+    });
+
+    // Keyboard navigation
     const links = Array.from(document.querySelectorAll('.link'));
     let currentIndex = 0;
 
-    // Focus first item initially
     window.onload = () => {
-      links[currentIndex].focus();
+      links[currentIndex]?.focus();
     };
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowDown' || e.key === 'j') {
-        e.preventDefault();
-        currentIndex = (currentIndex + 1) % links.length;
-        links[currentIndex].focus();
-      } else if (e.key === 'ArrowUp' || e.key === 'k') {
-        e.preventDefault();
-        currentIndex = (currentIndex - 1 + links.length) % links.length;
-        links[currentIndex].focus();
-      } else if (e.key === 'Enter') {
-        e.preventDefault();
-        links[currentIndex].click();
-      }
-    });
+	  const forwardKeys = ['ArrowRight', 'ArrowDown', 'j'];
+	  const backwardKeys = ['ArrowLeft', 'ArrowUp', 'k'];
+
+	  if (forwardKeys.includes(e.key)) {
+		e.preventDefault();
+		currentIndex = (currentIndex + 1) % links.length;
+		links[currentIndex].focus();
+	  } else if (backwardKeys.includes(e.key)) {
+		e.preventDefault();
+		currentIndex = (currentIndex - 1 + links.length) % links.length;
+		links[currentIndex].focus();
+	  } else if (e.key === 'Enter') {
+		e.preventDefault();
+		links[currentIndex].click();
+	  }
+	});	
+
   </script>
 </body>
 </html>
