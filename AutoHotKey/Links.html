@@ -11,29 +11,20 @@
       background: #f5f7fa;
       margin: 0;
       padding: 30px;
-	  display: flex;
-	  justify-content: center;	
+      display: flex;
+      justify-content: center;
     }
 
     .container {
-	  display: inline-block;         /* Shrinks/grows based on content */
-	  background: white;
-	  padding: 30px 40px;
-	  border-radius: 12px;
-	  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-	  max-height: 90vh;
-	  overflow-y: auto;
-	  text-align: center;           /* Optional: keeps content centered */
-	}
-	
-	#linksContainer {
-	  display: flex;
-	  flex-direction: column; /* remove it for horizontal layout */
-	  flex-wrap: wrap;
-	  gap: 12px;
-	  justify-content: center;
-	}
-
+      display: inline-block;
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      max-height: 90vh;
+      overflow-y: auto;
+      text-align: center;
+    }
 
     h2 {
       margin-top: 0;
@@ -41,66 +32,86 @@
       text-align: center;
     }
 
+    #linksContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      justify-content: center;
+    }
+
     .link {
-	  display: inline-block;
-	  min-width: 300px;
-	  background: #3366cc;
-	  color: white;
-	  text-decoration: none;
-	  padding: 12px 20px;
-	  margin: 0;
-	  border-radius: 8px;
-	  font-size: 16px;
-	  text-align: center;
-	  white-space: nowrap; /* prevent wrapping inside a button */
-	}
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-width: 300px;
+      background: #3366cc;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 16px;
+      white-space: nowrap;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 128, 0, 0.3);
+    }
 
     .link:focus {
-	  background: #27ae60; /* A lighter, vibrant but still rich green */
-	  box-shadow:
-		0 0 0 2px #27ae60,
-		0 0 12px 5px rgba(39, 174, 96, 0.4); /* Gentle glow */
-	  z-index: 1;
-	  position: relative;
-	  transform: scale(1.05);
-	}
+      background: #27ae60;
+      box-shadow:
+        0 0 0 2px #27ae60,
+        0 0 12px 5px rgba(39, 174, 96, 0.4);
+      z-index: 1;
+      position: relative;
+      transform: scale(1.05);
+      outline: none;
+    }
 
-    .link {
-	  transition: transform 0.2s, box-shadow 0.2s;
-	}
-	.link:hover {
-	  transform: scale(1.05);
-	  box-shadow: 0 0 10px rgba(0, 128, 0, 0.3); /* or match your glow color */
-	}
+    .link-title {
+      font-weight: 500;
+      text-align: left;
+    }
 
+    .shortcut {
+      font-size: 12px;
+      opacity: 1;
+      background: rgba(0,0,0, 0.2);
+      padding: 2px 6px;
+      border-radius: 6px;
+      margin-left: 10px;
+    }
   </style>
 
   <script>
-    // 👇 JSON-style data — only change this!
     const linksData = [
-	  {
-		title: "Gemini - Alphabet Practice",
-		href: "https://gemini.google.com/u/0/app/95e6874a0b67fcc4"
-	  },
-	  {
-		title: "Gemini - Quants Basic Practice",
-		href: "https://gemini.google.com/u/0/app/6685531fecb8517f"
-	  },
-	  {
-		title: "Banking GPT",
-		href: "https://chatgpt.com/c/6874c0ea-bf00-8007-bdef-11f775bacc9f"
-	  },
-	  {
-		title: "Telegram - Daily Epaper",
-		href: "tg://resolve?domain=dailyepaperzone29"
-	  },
-	  {
-		title: "Fill It",
-		href: "customlink://chatgpt_study"
-	  }
-	  
-	];
-
+      {
+        title: "Gemini - Alphabet Practice",
+        href: "https://gemini.google.com/u/0/app/95e6874a0b67fcc4"
+      },
+      {
+        title: "Gemini - Quants Basic Practice",
+        href: "https://gemini.google.com/u/0/app/6685531fecb8517f"
+      },
+      {
+        title: "Banking GPT",
+        href: "https://chatgpt.com/c/6874c0ea-bf00-8007-bdef-11f775bacc9f"
+      },
+      {
+        title: "Telegram - Daily Epaper",
+        href: "tg://resolve?domain=dailyepaperzone29"
+      },
+      {
+        title: "Fill DPP Tracker Form",
+        href: "https://docs.google.com/forms/d/e/1FAIpQLSeC99N9vaEgatdIi4GXpnuABcVQVfn52fg2fxoWTq6FH4g4bA/viewform?usp=header"
+      },
+      {
+        title: "DPP Tracker",
+        href: "https://docs.google.com/spreadsheets/d/14AWpqguO9DDp1ysiLfmZIcuBLTEkxFdlX-5Qvvf_css/edit?gid=1238129914#gid=1238129914"
+      }
+    ];
   </script>
 </head>
 <body>
@@ -110,15 +121,24 @@
   </div>
 
   <script>
-    // Generate links dynamically
     const container = document.getElementById("linksContainer");
 
     linksData.forEach((item, index) => {
       const a = document.createElement("a");
       a.href = item.href;
-      a.textContent = item.title;
       a.className = "link";
       a.tabIndex = 0;
+
+      const title = document.createElement("span");
+      title.className = "link-title";
+      title.textContent = item.title;
+
+      const shortcut = document.createElement("span");
+      shortcut.className = "shortcut";
+      shortcut.textContent = `Alt + ${index + 1}`;
+
+      a.appendChild(title);
+      a.appendChild(shortcut);
       container.appendChild(a);
     });
 
@@ -131,23 +151,32 @@
     };
 
     document.addEventListener('keydown', (e) => {
-	  const forwardKeys = ['ArrowRight', 'ArrowDown', 'j'];
-	  const backwardKeys = ['ArrowLeft', 'ArrowUp', 'k'];
+      const forwardKeys = ['ArrowRight', 'ArrowDown', 'j'];
+      const backwardKeys = ['ArrowLeft', 'ArrowUp', 'k'];
 
-	  if (forwardKeys.includes(e.key)) {
-		e.preventDefault();
-		currentIndex = (currentIndex + 1) % links.length;
-		links[currentIndex].focus();
-	  } else if (backwardKeys.includes(e.key)) {
-		e.preventDefault();
-		currentIndex = (currentIndex - 1 + links.length) % links.length;
-		links[currentIndex].focus();
-	  } else if (e.key === 'Enter') {
-		e.preventDefault();
-		links[currentIndex].click();
-	  }
-	});	
+      if (forwardKeys.includes(e.key)) {
+        e.preventDefault();
+        currentIndex = (currentIndex + 1) % links.length;
+        links[currentIndex].focus();
+      } else if (backwardKeys.includes(e.key)) {
+        e.preventDefault();
+        currentIndex = (currentIndex - 1 + links.length) % links.length;
+        links[currentIndex].focus();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        links[currentIndex].click();
+      }
 
+      if (e.altKey && e.key >= '1' && e.key <= '9') {
+        const idx = parseInt(e.key, 10) - 1;
+        if (links[idx]) {
+          e.preventDefault();
+          currentIndex = idx;
+          links[idx].focus();
+          links[idx].click();
+        }
+      }
+    });
   </script>
 </body>
 </html>
