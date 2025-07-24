@@ -16,15 +16,17 @@
     }
 
     .container {
-      display: inline-block;
-      background: white;
-      padding: 30px 40px;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-      max-height: 90vh;
-      overflow-y: auto;
-      text-align: center;
-    }
+	  display: inline-block;
+	  background: white;
+	  padding: 30px 40px;
+	  border-radius: 12px;
+	  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	  max-height: 90vh;
+	  overflow-y: auto;
+	  text-align: center;
+	  max-width: 95vw;
+	  width: 100%;
+	}
 
     h2 {
       margin-top: 0;
@@ -33,26 +35,29 @@
     }
 
     #linksContainer {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      justify-content: center;
-    }
+	  display: flex;
+	  flex-wrap: wrap;
+	  justify-content: center;
+	  gap: 12px;
+	  margin-top: 20px;
+	}
 
     .link {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-width: 300px;
-      background: #3366cc;
-      color: white;
-      text-decoration: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      white-space: nowrap;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  background: #3366cc;
+	  color: white;
+	  text-decoration: none;
+	  padding: 12px 20px;
+	  border-radius: 8px;
+	  font-size: 16px;
+	  white-space: nowrap;
+	  transition: transform 0.2s, box-shadow 0.2s;
+	  flex: 1 1 280px; /* Minimum width per box, and grow as needed */
+	  max-width: 350px;
+	  box-sizing: border-box;
+	}
 
     .link:hover {
       transform: scale(1.05);
@@ -97,7 +102,7 @@
       },
       {
         title: "Banking GPT",
-        href: "https://chatgpt.com/c/6874c0ea-bf00-8007-bdef-11f775bacc9f"
+        href: "https://chatgpt.com/c/687dec0c-795c-8007-8342-cc92c5e5b0b2"
       },
       {
         title: "Telegram - Daily Epaper",
@@ -108,9 +113,13 @@
         href: "https://docs.google.com/forms/d/e/1FAIpQLSeC99N9vaEgatdIi4GXpnuABcVQVfn52fg2fxoWTq6FH4g4bA/viewform?usp=header"
       },
       {
-        title: "DPP Tracker",
+        title: "DPP Score Tracker",
         href: "https://docs.google.com/spreadsheets/d/14AWpqguO9DDp1ysiLfmZIcuBLTEkxFdlX-5Qvvf_css/edit?gid=1238129914#gid=1238129914"
-      }
+      },
+	  {
+		title: "Progress Tracker", 
+		href: "https://docs.google.com/spreadsheets/d/1ouQSUtS6I1iXvPLit9AxaliQxhK3tFu7laskPLxwTJo/edit?gid=602950718#gid=602950718"
+	  }
     ];
   </script>
 </head>
