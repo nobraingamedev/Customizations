@@ -46,7 +46,7 @@ class OverlayTodoApp:
         
         # Input box FIRST (at bottom)
         self.task_entry = tk.Entry(self.main_frame, 
-                                  font=('Arial', 12), 
+                                  font=('Cascadia Mono', 12), 
                                   bg='#555555', fg='white',  # Lighter gray for visibility
                                   insertbackground='white',
                                   relief=tk.RAISED, bd=2,
@@ -160,7 +160,7 @@ class OverlayTodoApp:
         
         complete_btn = tk.Button(task_frame, text=complete_text,
                                command=lambda: self.toggle_complete(task['id']),
-                               font=('Arial', 8), 
+                               font=('Cascadia Mono', 8), 
                                bg=complete_color, fg='white',
                                relief=tk.FLAT, width=2, height=1,
                                activebackground=complete_hover_color,
@@ -179,7 +179,7 @@ class OverlayTodoApp:
         # Delete button (small)
         delete_btn = tk.Button(task_frame, text="✕",
                              command=lambda: self.delete_task(task['id']),
-                             font=('Arial', 8), 
+                             font=('Cascadia Mono', 8), 
                              bg='#f44336', fg='white',
                              relief=tk.FLAT, width=2, height=1,
                              activebackground='#f66356',  # Lighter red
@@ -197,7 +197,7 @@ class OverlayTodoApp:
         
         # Drag handle (≡ symbol)
         drag_handle = tk.Label(task_frame, text="≡", 
-                              font=('Arial', 10), fg='#888888', bg='#3a3a3a',
+                              font=('Cascadia Mono', 10), fg='#888888', bg='#3a3a3a',
                               cursor="hand2")
         drag_handle.pack(side=tk.LEFT, padx=(0, 5), pady=2)
         
@@ -211,7 +211,7 @@ class OverlayTodoApp:
         drag_handle.bind("<Leave>", on_drag_leave)
         
         # Task text
-        font_style = ('Arial', 11, 'overstrike') if task['completed'] else ('Arial', 13, 'normal')
+        font_style = ('Cascadia Mono', 11, 'overstrike') if task['completed'] else ('Cascadia Mono', 13, 'normal')
         text_color = '#888888' if task['completed'] else '#ffffff'
         
         task_label = tk.Label(task_frame, text=task['text'], 
@@ -326,7 +326,7 @@ class OverlayTodoApp:
             return
             
         # Create entry widget to replace label
-        entry = tk.Entry(task_frame, font=('Arial', 13), 
+        entry = tk.Entry(task_frame, font=('Cascadia Mono', 13), 
                         bg='#555555', fg='white',
                         insertbackground='white')
         entry.insert(0, task['text'])
