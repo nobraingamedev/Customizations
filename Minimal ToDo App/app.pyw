@@ -31,14 +31,15 @@ class OverlayTodoApp:
         x = screen_width - width - 20
         y = screen_height - height - 60  # 60px from bottom to account for taskbar
         
-        # Configure window - minimal style
+        # Configure window - with minimal title bar
         self.root.geometry(f"{width}x{height}+{x}+{y}")
+        self.root.title("Minimal ToDo")  # Set window title
         self.root.attributes('-topmost', True)
         self.root.attributes('-alpha', 0.85)
         self.root.configure(bg='#2b2b2b')
-        self.root.overrideredirect(True)  # Remove title bar completely
         
-        # Keep visible in Alt+Tab menu (removed -toolwindow attribute)
+        # Keep the title bar but make it minimal - remove overrideredirect
+        # This will make it visible in Alt+Tab menu
         
     def create_widgets(self):
         self.main_frame = tk.Frame(self.root, bg='#2b2b2b')
@@ -104,31 +105,6 @@ class OverlayTodoApp:
         # Bind mousewheel to root window so it works everywhere
         self.root.bind("<MouseWheel>", _on_mousewheel)
         
-        # Allow window dragging from main frame
-        def start_move(event):
-            self.root.x = event.x_root - self.root.winfo_x()
-            self.root.y = event.y_root - self.root.winfo_y()
-
-        def on_motion(event):
-            if hasattr(self.root, 'x') and self.root.x is not None:
-                x = event.x_root - self.root.x
-                y = event.y_root - self.root.y
-                self.root.geometry(f"+{x}+{y}")
-
-        def stop_move(event):
-            if hasattr(self.root, 'x'):
-                self.root.x = None
-                self.root.y = None
-
-        # Bind dragging to the main frame and canvas (anywhere except entry and buttons)
-        self.main_frame.bind("<Button-1>", start_move)
-        self.main_frame.bind("<B1-Motion>", on_motion)
-        self.main_frame.bind("<ButtonRelease-1>", stop_move)
-        
-        self.canvas.bind("<Button-1>", start_move)
-        self.canvas.bind("<B1-Motion>", on_motion)
-        self.canvas.bind("<ButtonRelease-1>", stop_move)
-        
     def add_task(self, event=None):
         task_text = self.task_entry.get().strip()
         if not task_text:
@@ -158,11 +134,14 @@ class OverlayTodoApp:
         complete_color = "#4CAF50" if not task['completed'] else "#FFC107"
         complete_hover_color = "#5CBF60" if not task['completed'] else "#FFD54F"  # Lighter versions
         
+        btn_font_size = 6 if task['completed'] else 8
+        btn_width = 2
+        
         complete_btn = tk.Button(task_frame, text=complete_text,
                                command=lambda: self.toggle_complete(task['id']),
-                               font=('Cascadia Mono', 8), 
+                               font=('Cascadia Mono', btn_font_size), 
                                bg=complete_color, fg='white',
-                               relief=tk.FLAT, width=2, height=1,
+                               relief=tk.FLAT, width=btn_width, height=1,
                                activebackground=complete_hover_color,
                                activeforeground='white')
         complete_btn.pack(side=tk.LEFT, padx=2, pady=2)
@@ -179,9 +158,9 @@ class OverlayTodoApp:
         # Delete button (small)
         delete_btn = tk.Button(task_frame, text="✕",
                              command=lambda: self.delete_task(task['id']),
-                             font=('Cascadia Mono', 8), 
+                             font=('Cascadia Mono', btn_font_size), 
                              bg='#f44336', fg='white',
-                             relief=tk.FLAT, width=2, height=1,
+                             relief=tk.FLAT, width=btn_width, height=1,
                              activebackground='#f66356',  # Lighter red
                              activeforeground='white')
         delete_btn.pack(side=tk.LEFT, padx=(0, 5), pady=2)
@@ -283,28 +262,6 @@ class OverlayTodoApp:
         drag_handle.bind("<Button-1>", start_drag)
         drag_handle.bind("<B1-Motion>", on_drag)
         drag_handle.bind("<ButtonRelease-1>", end_drag)
-        
-        # Allow window dragging from task text (but not drag handle)
-        def start_move_task(event):
-            # Only allow window dragging if not currently dragging a task
-            if not self.dragged_task:
-                self.root.x = event.x_root - self.root.winfo_x()
-                self.root.y = event.y_root - self.root.winfo_y()
-
-        def on_motion_task(event):
-            if hasattr(self.root, 'x') and self.root.x is not None and not self.dragged_task:
-                x = event.x_root - self.root.x
-                y = event.y_root - self.root.y
-                self.root.geometry(f"+{x}+{y}")
-
-        def stop_move_task(event):
-            if hasattr(self.root, 'x'):
-                self.root.x = None
-                self.root.y = None
-
-        task_label.bind("<Button-1>", start_move_task)
-        task_label.bind("<B1-Motion>", on_motion_task)
-        task_label.bind("<ButtonRelease-1>", stop_move_task)
         
     def toggle_complete(self, task_id):
         for task in self.tasks:
