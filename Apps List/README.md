@@ -37,7 +37,8 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Revo Uninstaller Pro - From taiwebs.com
 	- Powertoys
 	- PDFgear
-	- n8n
+	- Node.js
+	- n8n - Using command in node.js
 	- [Pen Tablet Driver](https://www.xp-pen.com/download/deco-mini7.html)
 	- FDM
 	- [Go to Browser Extensions](#-browser-extensions)
