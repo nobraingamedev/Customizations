@@ -3,6 +3,44 @@
 These are some of the apps that I consider downloading on a **New Machine** in case of a changing the current machinery.
 
 ### 🖥️ Windows Apps
+- Must Downloads 
+	- Brave Browser
+	- Photopea
+	- Openboard
+	- Lorien
+	- VLC
+	- Obsidian
+	- Notepad++
+	- OBS Studio
+	- Telegram Desktop
+	- Whatsapp
+	- Terminal Tools
+		- chocolatey - Install using the command available on the official website
+		- oh-my-posh
+		- PSReadLine
+			- Follow the guide in the [Terminal Folder](https://github.com/nobraingamedev/Customizations/tree/main/Terminal) to install the two above.
+		- fzf
+		- fd
+	- NileSoft Shell
+	- File Pilot
+	- Greenshot
+	- IrfanView
+	- Autohotkey
+	- Everything
+	- Bitwarden
+	- Flow Launcher
+	- FxSound
+	- Git
+	- Rainmeter
+	- Sumatra PDF
+	- Winrar
+	- Revo Uninstaller Pro - From taiwebs.com
+	- Powertoys
+	- PDFgear
+	- n8n
+	- [Pen Tablet Driver](https://www.xp-pen.com/download/deco-mini7.html)
+	- FDM
+	- [Go to Browser Extensions](#-browser-extensions)
 
 - Game Engine🕹️🎮
 	- Godot
@@ -13,8 +51,6 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Inkscape
 	- Photoshop
 	- Affine
-	- Openboard
-	- Lorien
 - Sound/Music🎹🎙️🎧
 	- Vital Synthesizer 
 	- FL Studio - For Music
@@ -25,9 +61,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Bfxr - prototyping
 - Video Editors and Players🎬✂️🎥
 	- DaVinci Resolve
-	- VLC
 - Management📅📋📊
-	- Obsidian
 	- Notion
 	- Miro
 	- Figma
@@ -36,56 +70,28 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Blockbench
 - Coding Editors👩‍💻🔧📝
 	- VS Code
-	- Notepad++
 - Other Game Dev Related⚔️🧩🎯
-	- OBS Studio
 	- Steam
 	- ComfyUI
 - Social Media📱💬🌐
 	- Discord
-	- Telegram Desktop
-	- Whatsapp
 - Terminal Tools
-	- chocolatey - Install using the command available on the official website
-	- oh-my-posh
-	- PSReadLine
-		- Follow the guide in the [Terminal Folder](https://github.com/nobraingamedev/Customizations/tree/main/Terminal) to install the two above.
-	- fzf
-	- fd
 	- micro
 	- ffmpeg
 	- yt-dlp
-- Other Must Downloads📐📏🗿
+- Others 📐📏🗿
 	- MarkText
-	- NileSoft Shell
-	- File Pilot
 	- Kando
-	- GreenShot
-	- IrfanView
 	- ImageGlass
-	- Autohotkey
 	- [FullScreenLock](https://github.com/blaberry/FullscreenLock)
-	- Brave
-	- Everything
-	- Bitwarden
-	- Flow Launcher
-	- FxSound
-	- Git
-	- Rainmeter
-	- Sumatra PDF
 	- Treesize
-	- Winrar & 7zip
+	- 7zip
 	- Stretchly
-	- Revo Uninstaller Pro
-	- Powertoys
-	- PDFgear
 	- Lock Hunter
-	- [Pen Tablet Driver](https://www.xp-pen.com/download/deco-mini7.html)
 - Others Optional❓🧩🎲
 	- Bluestacks
 	- Droid Cam
 	- Liquid Text
-	- FDM
 	- Github Desktop
 	- PureRef
 	- Spaceedesk
