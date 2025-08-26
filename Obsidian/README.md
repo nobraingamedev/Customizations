@@ -1,6 +1,6 @@
 # Obsidian
 
-- Download the `.obsidian` folder from 👉 [Here](https://github.com/ShivanshShukla01/Customizations/raw/main/Obsidian/.obsidian.rar) 👈
+- Download the `.obsidian` folder from 👉 [Here](https://github.com/nobraingamedev/Customizations/raw/main/Obsidian/.obsidian.rar) 👈
 - Unzip the file
 - Paste the `.obsidian` folder in the Vault's folder of Obsidian
 

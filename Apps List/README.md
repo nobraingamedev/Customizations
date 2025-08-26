@@ -39,6 +39,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- PDFgear
 	- Node.js
 	- n8n - Using command in node.js
+		- Download the workflows from [here](https://github.com/nobraingamedev/Customizations/raw/main/Obsidian/.obsidian.rar)
 	- [Pen Tablet Driver](https://www.xp-pen.com/download/deco-mini7.html)
 	- FDM
 	- [Go to Browser Extensions](#-browser-extensions)
