@@ -36,8 +36,8 @@
 
     #linksContainer {
 	  display: flex;
-	  flex-wrap: wrap;
-	  justify-content: center;
+	  flex-direction: column;
+	  align-items: center;
 	  gap: 12px;
 	  margin-top: 20px;
 	}
@@ -54,8 +54,8 @@
 	  font-size: 16px;
 	  white-space: nowrap;
 	  transition: transform 0.2s, box-shadow 0.2s;
-	  flex: 1 1 280px; /* Minimum width per box, and grow as needed */
-	  max-width: 350px;
+	  width: 350px;
+	  max-width: 100%;
 	  box-sizing: border-box;
 	}
 
@@ -93,32 +93,20 @@
   <script>
     const linksData = [
       {
-        title: "Gemini - Alphabet Practice",
-        href: "https://gemini.google.com/u/0/app/95e6874a0b67fcc4"
-      },
-      {
-        title: "Gemini - Quants Basic Practice",
-        href: "https://gemini.google.com/u/0/app/6685531fecb8517f"
-      },
-      {
         title: "Banking GPT",
-        href: "https://chatgpt.com/c/687dec0c-795c-8007-8342-cc92c5e5b0b2"
+        href: "https://chatgpt.com/c/68ac7410-0854-832c-ba8b-fd34d894eb28"
       },
       {
         title: "Telegram - Daily Epaper",
         href: "tg://resolve?domain=dailyepaperzone29"
       },
       {
-        title: "Fill DPP Tracker Form",
-        href: "https://docs.google.com/forms/d/e/1FAIpQLSeC99N9vaEgatdIi4GXpnuABcVQVfn52fg2fxoWTq6FH4g4bA/viewform?usp=header"
-      },
-      {
         title: "DPP Score Tracker",
         href: "https://docs.google.com/spreadsheets/d/14AWpqguO9DDp1ysiLfmZIcuBLTEkxFdlX-5Qvvf_css/edit?gid=1238129914#gid=1238129914"
       },
 	  {
-		title: "Progress Tracker", 
-		href: "https://docs.google.com/spreadsheets/d/1ouQSUtS6I1iXvPLit9AxaliQxhK3tFu7laskPLxwTJo/edit?gid=602950718#gid=602950718"
+		title: "Workflows", 
+		href: "https://adequate-ray-main.ngrok-free.app"
 	  }
     ];
   </script>
