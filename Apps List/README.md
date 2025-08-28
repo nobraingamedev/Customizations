@@ -34,10 +34,10 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Rainmeter
 	- Sumatra PDF
 	- Winrar
-	- Revo Uninstaller Pro - From taiwebs.com
+	- Revo Uninstaller Pro - From [Here](https://taiwebs.com)
 	- Powertoys
 	- PDFgear
-	- Node.js
+	- Docker
 	- n8n - Using command in node.js
 		- Download the workflows from [here](https://github.com/nobraingamedev/Customizations/raw/refs/heads/main/Apps%20List/n8n%20~%201.107.4%20.rar)
 	- [Pen Tablet Driver](https://www.xp-pen.com/download/deco-mini7.html)
