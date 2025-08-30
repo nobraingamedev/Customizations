@@ -1,6 +1,3 @@
-### $PROFILE
-
-```pwsh
 Set-Alias npp "C:\Program Files\Notepad++\notepad++.exe"
 
 # fzf window appearance change
@@ -42,9 +39,21 @@ function tmtf {
 
 # Open current working directory in filepilot 
 function fp {
-	param([string]$path = ".")
+    param([string]$path = ".")
 
     & "C:\Users\shiva\AppData\Local\Voidstar\FilePilot\FPilot.exe" $path
+}
+
+function gacp {
+    param(
+        [Parameter(Mandatory=$true, Position=0)]
+        [string]$message
+    )
+    
+    git add .
+    git status
+    git commit -m "$message"
+    git push
 }
 
 # Open the chosen file in notepad++
@@ -82,29 +91,29 @@ function kbs {
 
 # Open the commands 
 function hp {
-	$line = "---------------------------------------------"
-	Write-Host "tmt" -NoNewLine -ForegroundColor Cyan
-	Write-Host " -> cd to chosen directory" -ForegroundColor Cyan
-	Write-Host "tmtf" -NoNewLine -ForegroundColor Cyan
-	Write-Host " -> Take Me To chosen File's directory" -ForegroundColor Cyan
-	Write-Host "kbs" -NoNewLine -ForegroundColor Cyan
-	Write-Host " -> Kill app By Selection" -ForegroundColor Cyan
-	Write-Host $line -ForegroundColor Cyan 
-	Write-Host "of" -NoNewLine -ForegroundColor Cyan
-	Write-Host 	" -> Open File in Default Program" -ForegroundColor Cyan
-	Write-Host "npf" -NoNewLine -ForegroundColor Cyan
-	Write-Host " -> Open the chosen file in Notepad++" -ForegroundColor Cyan
-	Write-Host $line -ForegroundColor Cyan 
-	Write-Host "fp" -NoNewLine -ForegroundColor Cyan
-	Write-Host " -> Open FilePilot in current directory" -ForegroundColor Cyan
-	Write-Host "npp" -NoNewLine -ForegroundColor Cyan
-	Write-Host " -> Notepad++" -ForegroundColor Cyan
-	Write-Host $line -ForegroundColor Cyan 
-	Write-Host "hp" -NoNewLine -ForegroundColor Cyan
-	Write-Host " -> HELP - Print all these commands" -ForegroundColor Cyan
+    $line = "---------------------------------------------"
+    Write-Host "tmt" -NoNewLine -ForegroundColor Cyan
+    Write-Host " -> cd to chosen directory" -ForegroundColor Cyan
+    Write-Host "tmtf" -NoNewLine -ForegroundColor Cyan
+    Write-Host " -> Take Me To chosen File's directory" -ForegroundColor Cyan
+    Write-Host "kbs" -NoNewLine -ForegroundColor Cyan
+    Write-Host " -> Kill app By Selection" -ForegroundColor Cyan
+	Write-Host "gacp" -NoNewLine -ForegroundColor Cyan
+    Write-Host " -> Push the changes to github in one go" -ForegroundColor Cyan
+    Write-Host $line -ForegroundColor Cyan 
+    Write-Host "of" -NoNewLine -ForegroundColor Cyan
+    Write-Host     " -> Open File in Default Program" -ForegroundColor Cyan
+    Write-Host "npf" -NoNewLine -ForegroundColor Cyan
+    Write-Host " -> Open the chosen file in Notepad++" -ForegroundColor Cyan
+    Write-Host $line -ForegroundColor Cyan 
+    Write-Host "fp" -NoNewLine -ForegroundColor Cyan
+    Write-Host " -> Open FilePilot in current directory" -ForegroundColor Cyan
+    Write-Host "npp" -NoNewLine -ForegroundColor Cyan
+    Write-Host " -> Notepad++" -ForegroundColor Cyan
+    Write-Host $line -ForegroundColor Cyan 
+    Write-Host "hp" -NoNewLine -ForegroundColor Cyan
+    Write-Host " -> HELP - Print all these commands" -ForegroundColor Cyan
 }
 
 # Printing the help commands at the start of terminal
 hp
-
-```	    	    
