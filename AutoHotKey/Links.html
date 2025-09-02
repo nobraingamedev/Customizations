@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quick Launcher</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f5f7fa;
+      margin: 0;
+      padding: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+	  display: inline-block;
+	  background: white;
+	  padding: 30px 40px;
+	  border-radius: 12px;
+	  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	  max-height: 90vh;
+	  overflow-y: auto;
+	  text-align: center;
+	  max-width: 95vw;
+	  width: 100%;
+	}
+
+    h2 {
+      margin-top: 0;
+      font-size: 26px;
+      text-align: center;
+    }
+
+    #linksContainer {
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  gap: 12px;
+	  margin-top: 20px;
+	}
+
+    .link {
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  background: #3366cc;
+	  color: white;
+	  text-decoration: none;
+	  padding: 12px 20px;
+	  border-radius: 8px;
+	  font-size: 16px;
+	  white-space: nowrap;
+	  transition: transform 0.2s, box-shadow 0.2s;
+	  width: 350px;
+	  max-width: 100%;
+	  box-sizing: border-box;
+	}
+
+    .link:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(0, 128, 0, 0.3);
+    }
+
+    .link:focus {
+      background: #27ae60;
+      box-shadow:
+        0 0 0 2px #27ae60,
+        0 0 12px 5px rgba(39, 174, 96, 0.4);
+      z-index: 1;
+      position: relative;
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    .link-title {
+      font-weight: 500;
+      text-align: left;
+    }
+
+    .shortcut {
+      font-size: 12px;
+      opacity: 1;
+      background: rgba(0,0,0, 0.2);
+      padding: 2px 6px;
+      border-radius: 6px;
+      margin-left: 10px;
+    }
+  </style>
+
+  <script>
+    const linksData = [
+      {
+        title: "Banking GPT",
+        href: "https://chatgpt.com/c/68ac7410-0854-832c-ba8b-fd34d894eb28"
+      },
+      {
+        title: "Telegram - Daily Epaper",
+        href: "tg://resolve?domain=dailyepaperzone29"
+      },
+      {
+        title: "DPP Score Tracker",
+        href: "https://docs.google.com/spreadsheets/d/14AWpqguO9DDp1ysiLfmZIcuBLTEkxFdlX-5Qvvf_css/edit?gid=1238129914#gid=1238129914"
+      },
+	  {
+		title: "Workflows", 
+		href: "https://adequate-ray-main.ngrok-free.app"
+	  }
+    ];
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h2>🚀 Quick Launcher</h2>
+    <div id="linksContainer"></div>
+  </div>
+
+  <script>
+    const container = document.getElementById("linksContainer");
+
+    linksData.forEach((item, index) => {
+      const a = document.createElement("a");
+      a.href = item.href;
+      a.className = "link";
+      a.tabIndex = 0;
+
+      const title = document.createElement("span");
+      title.className = "link-title";
+      title.textContent = item.title;
+
+      const shortcut = document.createElement("span");
+      shortcut.className = "shortcut";
+      shortcut.textContent = `Alt + ${index + 1}`;
+
+      a.appendChild(title);
+      a.appendChild(shortcut);
+      container.appendChild(a);
+    });
+
+    // Keyboard navigation
+    const links = Array.from(document.querySelectorAll('.link'));
+    let currentIndex = 0;
+
+    window.onload = () => {
+      links[currentIndex]?.focus();
+    };
+
+    document.addEventListener('keydown', (e) => {
+      const forwardKeys = ['ArrowRight', 'ArrowDown', 'j'];
+      const backwardKeys = ['ArrowLeft', 'ArrowUp', 'k'];
+
+      if (forwardKeys.includes(e.key)) {
+        e.preventDefault();
+        currentIndex = (currentIndex + 1) % links.length;
+        links[currentIndex].focus();
+      } else if (backwardKeys.includes(e.key)) {
+        e.preventDefault();
+        currentIndex = (currentIndex - 1 + links.length) % links.length;
+        links[currentIndex].focus();
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        links[currentIndex].click();
+      }
+
+      if (e.altKey && e.key >= '1' && e.key <= '9') {
+        const idx = parseInt(e.key, 10) - 1;
+        if (links[idx]) {
+          e.preventDefault();
+          currentIndex = idx;
+          links[idx].focus();
+          links[idx].click();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
