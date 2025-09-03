@@ -21,6 +21,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 			- Follow the guide in the [Terminal Folder](https://github.com/nobraingamedev/Customizations/tree/main/Terminal) to install the two above.
 		- fzf
 		- fd
+		- Ditto
 	- NileSoft Shell
 	- File Pilot
 	- Greenshot
