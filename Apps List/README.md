@@ -26,6 +26,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- File Pilot
 	- Greenshot
 	- IrfanView
+	- Fluent Stopwatch
 	- Autohotkey
 	- Everything
 	- Bitwarden
