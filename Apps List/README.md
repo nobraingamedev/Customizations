@@ -22,6 +22,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 		- fzf
 		- fd
 		- yazi
+        - nvim
 	- NileSoft Shell
 	- File Pilot
 	- Ditto
@@ -110,6 +111,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 
 - 🗑️ Auto Tab Discard
 - 🚫 Block Site
+- ❣️ Vimium
 - 🌑 Dark Reader
 - 🧑‍💻 Daily.dev
 - ❌ Don't F\*\*\* with Paste
