@@ -23,6 +23,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 		- fd
 		- yazi
         - nvim
+        - zig - c compiler 
 	- NileSoft Shell
 	- File Pilot
 	- Ditto

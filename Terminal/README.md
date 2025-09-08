@@ -6,114 +6,142 @@ $env:FZF_DEFAULT_OPTS = '--multi --height 60% --layout=reverse --border --color=
 # oh-my-posh default theme to lead
 oh-my-posh init pwsh --config "C:\Users\shiva\AppData\Local\Programs\oh-my-posh\themes\gruvbox-edited.omp.json" | Invoke-Expression
 
+# Enable the zoxide 
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
 # PSReadLine options
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
 
 function home{cd ~}
+function q { exit }
+function y { yazi }
 
 # Take Me There
 function tmt {
-    $dir = fd --type d | fzf
-    if ($dir) {
-        Set-Location $dir
-    }
+	$dir = fd --type d | fzf
+	if ($dir) {
+		Set-Location $dir
+	}
 }
 
 # Open file in default Program
 function of {
-    $file = fd --type f | fzf
-    if ($file) {
-        Invoke-Item $file
-    }
+	$file = fd --type f | fzf
+	if ($file) {
+		Invoke-Item $file
+	}
 }
 
 # Take Me To File's directory
 function tmtf {
-    $file = fd --type f | fzf
-    if ($file) {
-        Set-Location (Split-Path $file -Parent)
-    }
+	$file = fd --type f | fzf
+	if ($file) {
+		Set-Location (Split-Path $file -Parent)
+	}
+}
+
+function gtp { 
+	$pwd.Path | clip
+	Write-Host "The path of the current directory has been copied to the clipboard"
+
 }
 
 # Open current working directory in filepilot 
 function fp {
-    param([string]$path = ".")
+	param([string]$path = ".")
 
-    & "C:\Users\shiva\AppData\Local\Voidstar\FilePilot\FPilot.exe" $path
+	& "C:\Users\shiva\AppData\Local\Voidstar\FilePilot\FPilot.exe" $path
 }
 
 function gacp {
-    param(
-        [Parameter(Mandatory=$true, Position=0)]
-        [string]$message
-    )
-    
-    git add .
-    git status
-    git commit -m "$message"
-    git push
+	param(
+		[Parameter(Mandatory=$true, Position=0)]
+		[string]$message
+	)
+	
+	git add .
+	git status
+	git commit -m "$message"
+	git push
 }
 
 # Open the chosen file in notepad++
 function npf {
-    $files = fd --type f | fzf --multi
-    if ($files) {
-        # $files can be multiple lines if --multi is used, so split by newline and open each
-        $files -split "`n" | ForEach-Object { npp $_ }
-    }
+	$files = fd --type f | fzf --multi
+	if ($files) {
+		# $files can be multiple lines if --multi is used, so split by newline and open each
+		$files -split "`n" | ForEach-Object { npp $_ }
+	}
 }
 
 # Kill file by selection
 function kbs {
-    $currentSessionId = (Get-Process -Id $PID).SessionId
+	$currentSessionId = (Get-Process -Id $PID).SessionId
 
-    Get-Process |
-    Where-Object { $_.SessionId -eq $currentSessionId } |
-    Select-Object Id, ProcessName, MainWindowTitle |
-    Sort-Object ProcessName |
-    ForEach-Object {
-        $title = if ($_.MainWindowTitle) { $_.MainWindowTitle } else { "[No Window]" }
-        "$($_.Id)`t$($_.ProcessName)`t$title"
-    } |
-    fzf --header "Select processes to kill (TAB = multi-select)" --multi |
-    ForEach-Object {
-        $targetPid = ($_ -split "`t")[0]
-        try {
-            Stop-Process -Id $targetPid -Force
-            Write-Host "Killed process with PID $targetPid"
-        } catch {
-            Write-Host "Failed to kill PID ${targetPid}: $_"
-        }
-    }
+	Get-Process |
+	Where-Object { $_.SessionId -eq $currentSessionId } |
+	Select-Object Id, ProcessName, MainWindowTitle |
+	Sort-Object ProcessName |
+	ForEach-Object {
+		$title = if ($_.MainWindowTitle) { $_.MainWindowTitle } else { "[No Window]" }
+		"$($_.Id)`t$($_.ProcessName)`t$title"
+	} |
+	fzf --header "Select processes to kill (TAB = multi-select)" --multi |
+	ForEach-Object {
+		$targetPid = ($_ -split "`t")[0]
+		try {
+			Stop-Process -Id $targetPid -Force
+			Write-Host "Killed process with PID $targetPid"
+		} catch {
+			Write-Host "Failed to kill PID ${targetPid}: $_"
+		}
+	}
 }
 
 # Open the commands 
 function hp {
-    $line = "---------------------------------------------"
-    Write-Host "tmt" -NoNewLine -ForegroundColor Cyan
-    Write-Host " -> cd to chosen directory" -ForegroundColor Cyan
-    Write-Host "tmtf" -NoNewLine -ForegroundColor Cyan
-    Write-Host " -> Take Me To chosen File's directory" -ForegroundColor Cyan
-    Write-Host "kbs" -NoNewLine -ForegroundColor Cyan
-    Write-Host " -> Kill app By Selection" -ForegroundColor Cyan
+	$line = "---------------------------------------------"
+	Write-Host "tmt" -NoNewLine -ForegroundColor Cyan
+	Write-Host " -> cd to chosen directory" -ForegroundColor Cyan
+	Write-Host "tmtf" -NoNewLine -ForegroundColor Cyan
+	Write-Host " -> Take Me To chosen File's directory" -ForegroundColor Cyan
+	Write-Host "kbs" -NoNewLine -ForegroundColor Cyan
+	Write-Host " -> Kill app By Selection" -ForegroundColor Cyan
 	Write-Host "gacp" -NoNewLine -ForegroundColor Cyan
-    Write-Host " -> Push the changes to github in one go" -ForegroundColor Cyan
-    Write-Host $line -ForegroundColor Cyan 
-    Write-Host "of" -NoNewLine -ForegroundColor Cyan
-    Write-Host     " -> Open File in Default Program" -ForegroundColor Cyan
-    Write-Host "npf" -NoNewLine -ForegroundColor Cyan
-    Write-Host " -> Open the chosen file in Notepad++" -ForegroundColor Cyan
-    Write-Host $line -ForegroundColor Cyan 
-    Write-Host "fp" -NoNewLine -ForegroundColor Cyan
-    Write-Host " -> Open FilePilot in current directory" -ForegroundColor Cyan
-    Write-Host "npp" -NoNewLine -ForegroundColor Cyan
-    Write-Host " -> Notepad++" -ForegroundColor Cyan
-    Write-Host $line -ForegroundColor Cyan 
-    Write-Host "hp" -NoNewLine -ForegroundColor Cyan
-    Write-Host " -> HELP - Print all these commands" -ForegroundColor Cyan
+	Write-Host " -> Push the changes to github in one go" -ForegroundColor Cyan
+	Write-Host "gtp" -NoNewLine -ForegroundColor Cyan
+	Write-Host " -> Get the Path in the clipboard" -ForegroundColor Cyan
+	Write-Host $line -ForegroundColor Cyan 
+	Write-Host "of" -NoNewLine -ForegroundColor Cyan
+	Write-Host     " -> Open File in Default Program" -ForegroundColor Cyan
+	Write-Host "npf" -NoNewLine -ForegroundColor Cyan
+	Write-Host " -> Open the chosen file in Notepad++" -ForegroundColor Cyan
+	Write-Host $line -ForegroundColor Cyan 
+	Write-Host "fp" -NoNewLine -ForegroundColor Cyan
+	Write-Host " -> Open FilePilot in current directory" -ForegroundColor Cyan
+	Write-Host "npp" -NoNewLine -ForegroundColor Cyan
+	Write-Host " -> Notepad++" -ForegroundColor Cyan
+	Write-Host $line -ForegroundColor Cyan 
+	Write-Host "hp" -NoNewLine -ForegroundColor Cyan
+	Write-Host " -> HELP - Print all these commands" -ForegroundColor Cyan
 }
 
 # Printing the help commands at the start of terminal
 hp
+
+$ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
+if (Test-Path($ChocolateyProfile)) {
+  Import-Module "$ChocolateyProfile"
+}
+
+function y {
+    $tmp = (New-TemporaryFile).FullName
+    yazi $args --cwd-file="$tmp"
+    $cwd = Get-Content -Path $tmp -Encoding UTF8
+    if (-not [String]::IsNullOrEmpty($cwd) -and $cwd -ne $PWD.Path) {
+        Set-Location -LiteralPath (Resolve-Path -LiteralPath $cwd).Path
+    }
+    Remove-Item -Path $tmp
+}
