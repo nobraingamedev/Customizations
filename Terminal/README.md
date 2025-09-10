@@ -6,6 +6,7 @@ $env:FZF_DEFAULT_OPTS = '--multi --height 60% --layout=reverse --border --color=
 # oh-my-posh default theme to lead
 oh-my-posh init pwsh --config "C:\Users\shiva\AppData\Local\Programs\oh-my-posh\themes\gruvbox-edited.omp.json" | Invoke-Expression
 
+
 # Enable the zoxide 
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
@@ -145,3 +146,5 @@ function y {
     }
     Remove-Item -Path $tmp
 }
+
+
