@@ -14,6 +14,7 @@
       { title: "Newsfeed", href: "https://www.inoreader.com/all_articles", colors: ["#ffa726", "#ffb74d"] },
       { title: "Rojgar Result", href: "https://www.rojgarresult.com/", colors: ["#fd79a8", "#fdcb6e"] },
       { title: "Progress Tracker", href: "https://docs.google.com/spreadsheets/d/1ouQSUtS6I1iXvPLit9AxaliQxhK3tFu7laskPLxwTJo/edit?gid=602950718#gid=602950718", colors: ["#a29bfe", "#6c5ce7"] },
+      { title: "Vocabulary Words", href: "https://docs.google.com/spreadsheets/d/17m3j1VHDbXbJ9Vo-TtLAtiXYBqGQzd8Mcud0cGtPhAI/edit?gid=0#gid=0", colors: ["#ff6b6b", "#ff8e8e"] },
     ];
   </script>
 
@@ -29,6 +30,7 @@
       justify-content: center;
       align-items: flex-start;
       min-height: 100vh;
+	  overflow: hidden; /*remove to enable the scrollbar*/
     }
 
     @keyframes gradientShift {
@@ -129,8 +131,6 @@
       font-weight: 600;
       box-sizing: border-box;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      opacity: 0;
-      animation: slideUp 0.8s forwards;
       border: 2px solid rgba(226, 232, 240, 0.6);
       position: relative;
       overflow: hidden;
@@ -215,24 +215,9 @@
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       position: relative;
       z-index: 2;
+      white-space: nowrap;
     }
 
-    /* Animations */
-    @keyframes slideUp {
-      0% { 
-        opacity: 0; 
-        transform: translateY(60px) scale(0.9) rotate(5deg); 
-      }
-      70% {
-        transform: translateY(-10px) scale(1.02) rotate(-2deg);
-      }
-      100% { 
-        opacity: 1; 
-        transform: translateY(0) scale(1) rotate(0deg); 
-      }
-    }
-
-    /* Responsive design */
     @media (max-width: 768px) {
       body {
         padding: 20px;
@@ -272,11 +257,8 @@
       a.style.setProperty('--primary-color', item.colors[0]);
       a.style.setProperty('--secondary-color', item.colors[1]);
 
-      // Staggered animation delay
-      // a.style.animationDelay = `${0.15 * (index + 1)}s`;
-	  
-	  // All links animate at the same time
-	  a.style.animationDelay = `0.3s`;	
+      // Shortcut key: 1..9 then 0 for the 10th
+      let shortcutKey = (index === 9) ? '0' : (index + 1);
 
       const title = document.createElement("span");
       title.className = "link-title";
@@ -284,7 +266,7 @@
 
       const shortcut = document.createElement("span");
       shortcut.className = "shortcut";
-      shortcut.textContent = `Alt + ${index + 1}`;
+      shortcut.textContent = `Alt + ${shortcutKey}`;
 
       a.appendChild(title);
       a.appendChild(shortcut);
@@ -316,10 +298,14 @@
         links[currentIndex].click();
       }
 
-      if (e.altKey && e.key >= '1' && e.key <= '9') {
-        const idx = parseInt(e.key, 10) - 1;
+      // Alt+Number shortcuts
+      if (e.altKey && e.key >= '0' && e.key <= '9') {
+        e.preventDefault();
+
+        // Map '0' to index 9 (10th link)
+        let idx = (e.key === '0') ? 9 : parseInt(e.key, 10) - 1;
+
         if (links[idx]) {
-          e.preventDefault();
           currentIndex = idx;
           links[idx].focus();
           links[idx].click();

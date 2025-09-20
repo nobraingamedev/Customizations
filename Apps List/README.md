@@ -40,6 +40,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Sumatra PDF
 	- Winrar
 	- Revo Uninstaller Pro - From [Here](https://taiwebs.com)
+    - Anki
 	- Powertoys
 	- PDFgear
 	- Docker
