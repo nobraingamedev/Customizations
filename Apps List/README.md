@@ -5,9 +5,8 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 ### 🖥️ Windows Apps
 - Must Downloads 
 	- Brave Browser
+	- yasb
 	- Photopea
-	- Openboard
-	- Lorien
 	- VLC
 	- Obsidian
 	- Notepad++
@@ -44,8 +43,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- Powertoys
 	- PDFgear
 	- Docker
-	- n8n - Using command in node.js
-		- Download the workflows from [here](https://github.com/nobraingamedev/Customizations/raw/refs/heads/main/Apps%20List/n8n%20~%201.107.4%20.rar)
+	- n8n (via docker image)
 	- [Pen Tablet Driver](https://www.xp-pen.com/download/deco-mini7.html)
 	- FDM
 	- [Go to Browser Extensions](#-browser-extensions)
