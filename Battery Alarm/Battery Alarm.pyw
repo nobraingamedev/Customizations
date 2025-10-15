@@ -1,8 +1,10 @@
 import psutil
 import winsound
 import time
+import os
 from threading import Thread
 from PIL import Image, ImageDraw
+from playsound import playsound
 import pystray
 
 # Thresholds
@@ -13,17 +15,24 @@ CHECK_INTERVAL = 2  # seconds
 # Beep settings
 BEEP_FREQUENCY = 2000  # Hz
 BEEP_DURATION = 1000   # milliseconds
-BEEP_GAP = 1        # seconds between beeps
+SOUND_GAP = 1     # seconds between alert sound
 
 # State variables
 alert_active = False
 stop_alert = False
 
+scenario = ""
+
 # Function to beep continuously
-def beep_loop():
+def alert_sound():
+    if scenario == "low-battery":
+        sound = "low-battery.wav"
+    elif scenario == "full-battery":
+        sound = "full-battery.wav"
+
     while not stop_alert:
-        winsound.Beep(BEEP_FREQUENCY, BEEP_DURATION)
-        time.sleep(BEEP_GAP)
+        playsound(sound)
+        time.sleep(SOUND_GAP)
 
 # Create a simple icon for the tray
 def create_image():
@@ -49,6 +58,7 @@ def setup_tray():
         global stop_alert
         stop_alert = True
         icon.stop()
+        os._exit(0)
 
     icon = pystray.Icon("BatteryAlert", create_image(), "Battery Alert",
                         menu=pystray.Menu(pystray.MenuItem("Quit", quit_action)))
@@ -71,12 +81,14 @@ while True:
         if not alert_active:
             alert_active = True
             stop_alert = False
-            Thread(target=beep_loop, daemon=True).start()
+            scenario = "low-battery"
+            Thread(target=alert_sound, daemon=True).start()
     elif percent >= HIGH_BATTERY and charging:
         if not alert_active:
             alert_active = True
             stop_alert = False
-            Thread(target=beep_loop, daemon=True).start()
+            scenario = "full-battery"
+            Thread(target=alert_sound, daemon=True).start()
     else:
         # Battery status safe → stop alert if active
         if alert_active:
