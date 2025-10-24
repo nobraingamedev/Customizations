@@ -1,56 +1,36 @@
 import psutil
-import winsound
 import time
 import os
+from pystray import Icon, Menu, MenuItem
 from threading import Thread
 from PIL import Image, ImageDraw
-from playsound import playsound
-import pystray
+from pydub import AudioSegment
+from pydub.playback import play
 
-# Thresholds
-LOW_BATTERY = 40
-HIGH_BATTERY = 97
-CHECK_INTERVAL = 2  # seconds
 
-# Beep settings
-BEEP_FREQUENCY = 2000  # Hz
-BEEP_DURATION = 1000   # milliseconds
-SOUND_GAP = 1     # seconds between alert sound
+LOWEST_BATTERY_POINT = 40
+HIGHEST_BATTERY_POINT = 97
+CHECK_INTERVAL = 2               # seconds
 
-# State variables
+GAP_BETWEEN_ALERTS = 1           # seconds between alert sound
+VOLUME_INCREASE = 8              # increase the volumne of the wav file by 8db
+
 alert_active = False
 stop_alert = False
 
 scenario = ""
 
-# Function to beep continuously
 def alert_sound():
     if scenario == "low-battery":
-        sound = "low-battery.wav"
+        sound_file = "low-battery.wav"
     elif scenario == "full-battery":
-        sound = "full-battery.wav"
+        sound_file = "full-battery.wav"
 
+    sound = AudioSegment.from_file(sound_file)
+    
     while not stop_alert:
-        playsound(sound)
-        time.sleep(SOUND_GAP)
-
-# Create a simple icon for the tray
-def create_image():
-    width = 64
-    height = 64
-    image = Image.new('RGBA', (width, height), (0, 0, 0, 0))  # Transparent background
-    dc = ImageDraw.Draw(image)
-    
-    # Draw battery body (rounded rectangle)
-    dc.rounded_rectangle([12, 20, 52, 44], radius=3, fill=(34, 34, 34), outline=(255, 255, 255), width=2)
-    
-    # Draw battery terminal (small rectangle on right)
-    dc.rectangle([52, 28, 56, 36], fill=(255, 255, 255))
-    
-    # Draw battery fill (green bar inside)
-    dc.rectangle([16, 24, 44, 40], fill=(76, 175, 80))
-
-    return image
+        play(sound + VOLUME_INCREASE)
+        time.sleep(GAP_BETWEEN_ALERTS)
 
 # Function for tray icon
 def setup_tray():
@@ -60,14 +40,21 @@ def setup_tray():
         icon.stop()
         os._exit(0)
 
-    icon = pystray.Icon("BatteryAlert", create_image(), "Battery Alert",
-                        menu=pystray.Menu(pystray.MenuItem("Quit", quit_action)))
+    icon_img = Image.open("Battery Alarm.ico")
+    icon = Icon("BatteryAlert", icon_img, "Battery Alert", 
+    menu=Menu(MenuItem("Quit", quit_action)))
     icon.run()
 
-# Start tray icon in a separate thread
-Thread(target=setup_tray, daemon=True).start()
+def maintain_posture():
+    posture_reminder_audio = AudioSegment.from_file("Posture Reminder.wav")
+    play(posture_reminder_audio + VOLUME_INCREASE)
+    while True:
+        time.sleep(20*60)
+        play(posture_reminder_audio + VOLUME_INCREASE)
 
-# Main monitoring loop
+Thread(target=setup_tray, daemon=True).start()
+Thread(target=maintain_posture, daemon=True).start()
+
 while True:
     battery = psutil.sensors_battery()
     if battery is None:
@@ -77,13 +64,13 @@ while True:
     percent = battery.percent
     charging = battery.power_plugged
 
-    if percent <= LOW_BATTERY and not charging:
+    if percent <= LOWEST_BATTERY_POINT and not charging:
         if not alert_active:
             alert_active = True
             stop_alert = False
             scenario = "low-battery"
             Thread(target=alert_sound, daemon=True).start()
-    elif percent >= HIGH_BATTERY and charging:
+    elif percent >= HIGHEST_BATTERY_POINT and charging:
         if not alert_active:
             alert_active = True
             stop_alert = False
@@ -96,3 +83,4 @@ while True:
             alert_active = False
 
     time.sleep(CHECK_INTERVAL)
+
