@@ -3,9 +3,9 @@ import time
 import os
 from pystray import Icon, Menu, MenuItem
 from threading import Thread
-from PIL import Image, ImageDraw
 from pydub import AudioSegment
 from pydub.playback import play
+from PIL import Image
 
 
 LOWEST_BATTERY_POINT = 40
@@ -13,7 +13,7 @@ HIGHEST_BATTERY_POINT = 97
 CHECK_INTERVAL = 2               # seconds
 
 GAP_BETWEEN_ALERTS = 1           # seconds between alert sound
-VOLUME_INCREASE = 8              # increase the volumne of the wav file by 8db
+VOLUME_INCREASE = 4              # increase the volumne of the wav file by X db
 
 alert_active = False
 stop_alert = False
