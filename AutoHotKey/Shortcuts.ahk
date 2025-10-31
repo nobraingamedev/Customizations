@@ -26,29 +26,13 @@ return
 ;WINDOW + CONTROL + y
 #^y:: 
     Run, "C:\Users\shiva\OneDrive\Pictures\Apps\Brave Profiles\Coding - Brave.lnk" --incognito https://www.youtube.com
-return
-
-;CONTROL + SHIFT + ALT + Y
-^!+y::
-    Run, "C:\Users\shiva\OneDrive\Pictures\Apps\Brave Profiles\Kridachetra - Brave.lnk"
-return    
-
-;Shift + Alt + Ctrl + O
-^+!o::
-    Run,"C:\Program Files\Notepad++\notepad++.exe" "C:\Users\shiva\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Shortcuts.ahk"
-return
+return   
 
 ;Window + E
 #e::
     Run, "C:\Users\shiva\AppData\Local\Voidstar\FilePilot\FPilot.exe"
 
-;Window + Alt + Ctrl + R
-^+!r::
-    Reload
-return
-
 #+s::Send {PrintScreen}	
-
 
 #s:: Run, "C:\Program Files\Everything\Everything.exe"
 
@@ -63,6 +47,10 @@ return
     Run, "C:\Users\shiva\OneDrive\Pictures\Apps\Brave Profiles\Coding - Brave.lnk" "https://www.perplexity.ai/"
 return 
 
+^!l::
+    Run, "C:\Users\shiva\OneDrive\Pictures\Apps\Brave Profiles\Coding - Brave.lnk" "https://www.phind.com/"
+return 
+
 ^!o::
     Run, "C:\Users\shiva\OneDrive\Pictures\Apps\Brave Profiles\Coding - Brave.lnk" "C:\Users\shiva\Desktop\Links.html"
 return
@@ -74,39 +62,6 @@ return
 ^!b::
     Run, "C:\Users\shiva\OneDrive\Pictures\Apps\Brave Profiles\Coding - Brave.lnk" "https://gemini.google.com/u/0/app"
 return
-
-; @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
-;SO THAT F1 and F2 DO NOT LOSE ITS OWN FUNCTIONALITY
-F1::
-    KeyWait, F1
-    if (A_PriorKey = "F1") {
-        Send {F1}
-    }
-    return
-F2::
-    KeyWait, F2
-    if (A_PriorKey = "F2") {
-        Send {F2}
-    }
-    return
-
-F2 & Up:: ; F2 + Arrow Up
-    Send, {WheelUp 1} ; Scrolls up
-    return
-
-; Scroll down using F2 + Arrow
-F2 & Down:: ; F2 + Arrow Down
-    Send, {WheelDown 1} ; Scrolls down
-    return
-
-F2 & Left:: ; F2 + Arrow Down
-    Send, {WheelLeft 1} ; Scrolls down
-    return
-
-F2 & Right:: ; F2 + Arrow Down
-    Send, {WheelRight 1} ; Scrolls down
-    return
 
 ; @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
