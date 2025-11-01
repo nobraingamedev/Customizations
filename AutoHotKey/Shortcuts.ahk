@@ -31,6 +31,7 @@ return
 ;Window + E
 #e::
     Run, "C:\Users\shiva\AppData\Local\Voidstar\FilePilot\FPilot.exe"
+return 
 
 #+s::Send {PrintScreen}	
 

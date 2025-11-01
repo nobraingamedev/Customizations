@@ -50,7 +50,7 @@ def maintain_posture():
     play(posture_reminder_audio + VOLUME_INCREASE)
     while True:
         time.sleep(20*60)
-        play(posture_reminder_audio + VOLUME_INCREASE)
+        play(posture_reminder_audio + VOLUME_INCREASE - 2)
 
 Thread(target=setup_tray, daemon=True).start()
 Thread(target=maintain_posture, daemon=True).start()
