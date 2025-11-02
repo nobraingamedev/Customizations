@@ -110,7 +110,7 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 ### 🌐 Browser Extensions
 
 - 🗑️ Auto Tab Discard
-- 🚫 Block Site
+- 🚫 LeechBlockNG
 - ❣️ Vimium
 - 🌑 Dark Reader
 - 🧑‍💻 Daily.dev
