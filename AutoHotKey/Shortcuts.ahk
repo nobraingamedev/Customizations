@@ -9,30 +9,6 @@
 
 SetCapsLockState, AlwaysOff
 
-CapsLock::
-    KeyWait, CapsLock, T0.2
-    if ErrorLevel
-	return
-    Send, {Media_Play_Pause}
-return
-
-#If GetKeyState("CapsLock", "P")
-    Left::
-        ControlFocus, ahk_exe brave.exe  ; Change to your browser
-        WinActivate, ahk_exe brave.exe
-        Send, {Left}
-        Sleep, 50
-        WinActivate, A  ; Return to previous window
-    return
-    
-    Right::
-        ControlFocus, ahk_exe brave.exe  ; Change to your browser
-        WinActivate, ahk_exe brave.exe
-        Send, {Right}
-        Sleep, 50
-        WinActivate, A  ; Return to previous window
-    return
-#If
 
 !i:: Run, wt.exe
 return
