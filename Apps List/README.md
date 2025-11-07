@@ -10,11 +10,13 @@ These are some of the apps that I consider downloading on a **New Machine** in c
 	- VLC
 	- Obsidian
 	- Notepad++
+	- Sublime Text
 	- OBS Studio
 	- Telegram Desktop
 	- Whatsapp
 	- Terminal Tools
 		- chocolatey - Install using the command available on the official website
+		- rclone - help in uploading files to drive directly without GUI
 		- oh-my-posh
 		- PSReadLine
 			- Follow the guide in the [Terminal Folder](https://github.com/nobraingamedev/Customizations/tree/main/Terminal) to install the two above.
