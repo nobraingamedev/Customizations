@@ -63,12 +63,12 @@ return
 ; @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 ; Jump up 5 lines 
-F1 & Up:: ; F1 + Arrow Up
+Control & Up:: ; F1 + Arrow Up
     SendInput, {Up 5} ; Moves up 5 lines in one action
     return
 
 ; Jump down 5 lines 
-F1 & Down:: ; F1 + Arrow Down
+Control & Down:: ; F1 + Arrow Down
     SendInput, {Down 5} ; Moves down 5 lines in one action
     return
 

@@ -11,7 +11,7 @@ komorebi:
 bars:
   primary-bar:
     enabled: true
-    screens: ["*"]
+    screens: ["primary"]
     class_name: "yasb-bar"
     alignment:
       position: "top"
@@ -41,8 +41,7 @@ bars:
       left:
       - "home"
       - "launchpad"      
-      - "komorebi_workspaces"
-      - "komorebi_active_layout"
+      - "reminder_label"
       - "active_window"
       center:
       - "clock"
@@ -56,6 +55,10 @@ bars:
       - "notifications"
       - "power_menu"
 widgets:
+  reminder_label:
+    type: "yasb.battery.BatteryWidget"
+    options:
+      label: "FLASHCARDS!!!"
   home:
     type: "yasb.home.HomeWidget"
     options:
@@ -244,7 +247,7 @@ widgets:
     options:
       label: "<span>{icon}</span> {level}"
       label_alt: "{volume}"
-      tooltip: false
+      tooltip: true
       volume_icons:
         - "\ueee8"
         - "\uf026"
@@ -253,7 +256,18 @@ widgets:
         - "\uf028"
       callbacks:
         on_left: "toggle_mute"
-        on_right: "exec cmd.exe /c start ms-settings:sound"
+        on_right: "toggle_volume_menu"
+      audio_menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "#system"
+        alignment: "right"
+        direction: "down"
+        show_apps: true
+        show_app_labels: true
+        show_app_icons: true  
+        show_apps_expanded: true    
   microphone:
     type: "yasb.microphone.MicrophoneWidget"
     options:
@@ -420,9 +434,9 @@ widgets:
         country_code: "AR"
         holiday_color: "#FF6464"
       callbacks:
-        on_left: "toggle_label"
+        on_left: "toggle_calendar"
         on_middle: "do_nothing"
-        on_right: "next_timezone"
+        on_right: "toggle_label"
       label_shadow:
         enabled: true
         color: "black"
@@ -461,7 +475,7 @@ widgets:
     options:
       label: "<span>\uf4bc</span> {virtual_mem_free}/{virtual_mem_total}"
       label_alt: "<span>\uf4bc</span> VIRT: {virtual_mem_percent}% SWAP: {swap_mem_percent}%"
-      update_interval: 5000
+      update_interval: 2000
       callbacks:
         on_left: "toggle_label"
         on_middle: "do_nothing"
